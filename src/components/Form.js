@@ -1,4 +1,6 @@
 function Form(){
+
+    //functies die submit aanpakken
     return (
         <div>
             <form action="/submit" method="post">

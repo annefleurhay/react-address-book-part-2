@@ -17,10 +17,8 @@ function ContactDetails(props) {
 
     return (
         <div> 
-        <li>Naam: {props.name}</li>
-        <li>Straat:</li>
-        <li>Stad:</li>
-        <Contacts/>
+        
+        <Contacts props={Contacts} />
         
 
 

@@ -1,17 +1,20 @@
 import ContactDetails from "./ContactDetails"
 import { Link } from "react-router-dom"
 function ContactList(props){
+    const {contacts} = props
 
     //console.log(props.contacts)
-    console.log(props.contacts.name)
+    console.log(contacts , 'hiero')
+    
 
    
     return (
         <>
         <h1>Contacts</h1>
-        {props.contacts.map((person)=>
+        {contacts.map((person)=>
             (<>
             <li>{person.name} </li>
+            <li>{person.email}</li>
             <Link to='/contactlist/details/:id'><button>Details</button></Link>
             
             {/* <ContactDetails contacts={props.contacts}/> */}

@@ -14,12 +14,11 @@ function App() {
         <h1>Menu</h1>
         <ul>
             <li>
-            <Link to='/contactlist'>Contacts list</Link>
+            <Link to='/contactlist'>Contacts</Link>
             </li>
-            
-            <Link to='/newcontact'>New contact</Link>
-            <li>
 
+            <li>
+            <Link to='/newcontact'>New contact</Link>
             </li>
             
 
