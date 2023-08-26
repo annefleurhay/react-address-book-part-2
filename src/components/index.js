@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ContactList from "./ContactList";
 //import { useNavigate } from "react-router-dom";
+import ContactDetails from "./ContactDetails";
 
 function ContactIndex() {
     const [contact, setContact] = useState([])
@@ -17,9 +18,8 @@ function ContactIndex() {
 
 return (
         <>
-        
         <ContactList contacts={contact}/>
-
+        
         </>
 
 )
