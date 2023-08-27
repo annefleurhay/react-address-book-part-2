@@ -16,6 +16,8 @@ function ContactIndex() {
         PeopleData()
     }, [])
 
+    
+
 return (
         <>
         <ContactList contacts={contact}/>

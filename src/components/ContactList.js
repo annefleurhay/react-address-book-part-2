@@ -1,7 +1,8 @@
-import ContactDetails from "./ContactDetails"
+//import ContactDetails from "./ContactDetails"
 import { Link } from "react-router-dom"
+import Contacts from "./Contacts"
 function ContactList(props){
-    const {contacts} = props
+    const { contacts } = props
 
     //console.log(props.contacts)
     console.log(contacts , 'hiero')
@@ -11,22 +12,23 @@ function ContactList(props){
     return (
         <>
         <h1>Contacts</h1>
-        {contacts.map((person)=>
-            (<>
+        {contacts.map((person, index)=> 
+            (<div key={index}>
+            <Contacts person={person}/>
             <li>{person.name} </li>
-            <li>{person.email}</li>
-            <Link to='/contactlist/details/:id'><button>Details</button></Link>
+            {/* <li>{person.email}</li> */}
+            {/* <Link to='/contactlist/details/:id'><button>Details</button></Link> */}
+            <Link to={`/contactlist/details/${person.id}`}><button>Details</button></Link>
+            
             
             {/* <ContactDetails contacts={props.contacts}/> */}
             {/* <h1>HIER BEN IK </h1> */}
             {/* <li>{person.email}</li> */}
             {/* Link naar contactdetails zodat de contactinformatie zichtbaar is. */}
-            </>)
-            
-    )}
+            </div>))}
         </>
 
-    )
+    );
     
 }
 

@@ -1,9 +1,10 @@
 import './App.css';
 import {Route, Routes, Link} from 'react-router-dom'
-//import ContactList from './components/ContactList';
+import ContactList from './components/ContactList';
 import ContactIndex from './components';
 import ContactDetails from './components/ContactDetails';
 import Form from './components/Form';
+import Contacts from './components/Contacts';
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
         </ul>
         <Routes>
             <Route path='/contactlist' element={<ContactIndex/>}/>
-            <Route path='/contactlist/details/:id' element={<ContactDetails/>}/>
+            <Route path='/contactlist/details/:id' element={<Contacts/>}/>
             <Route path='/newcontact' element={<Form/>}/>
 
         </Routes>

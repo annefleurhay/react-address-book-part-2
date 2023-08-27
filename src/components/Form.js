@@ -1,21 +1,83 @@
+import { useState } from "react"
+
 function Form(){
+    const [newContact, setNewContact] = useState({
+        firstName: '',
+        lastName: '',
+        street: '',
+        city: '', 
+
+
+    })
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(newContact)
+        setNewContact({
+        firstName: '',
+        lastName: '',
+        street: '',
+        city: '', 
+
+        })
+    }
+    const handleChange = (event) => {
+        const {name, value,} = event.target
+        setNewContact({...newContact, [name]: value})
+    }
+
+
 
     //functies die submit aanpakken
     return (
-        <div>
-            <form action="/submit" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required/>
+        <form onSubmit={handleSubmit}>
+            <ul>
+                <li>
+                <label>First name:<input
+                    type="text"
+                    name="firstName"
+                    value={newContact.firstName}
+                    onChange={handleChange}
+                /></label>
+                </li>
 
-        <label for="street">Street:</label>
-        <input type="text" id="street" name="street" required/>
+                <li>
+                <label>Last name:<input
+                    type="text"
+                    name="lastName"
+                    value={newContact.lastName}
+                    onChange={handleChange}
+                /></label>
+                </li>
 
-        <label for="city">City:</label>
-        <input type="text" id="city" name="city" required/>
+                <li>
+                <label>Street:<input
+                    type="text"
+                    name="street"
+                    value={newContact.street}
+                    onChange={handleChange}
+                /></label>
+                </li>
 
-        <input type="submit" value="Submit"/>
-    </form>
-        </div>
+                <li>
+                <label>City:<input
+                    type="text"
+                    name="city"
+                    value={newContact.city}
+                    onChange={handleChange}
+                /></label> 
+                </li>
+                <li>
+                <input type="submit" value="Add"  />
+                </li>
+
+
+
+
+            </ul>
+            
+
+
+        </form>
     )
 }
 

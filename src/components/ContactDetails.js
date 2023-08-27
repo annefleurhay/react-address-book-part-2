@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Contacts from "./Contacts"
 //Zorg ervoor dat alle informatie eerst hiernaartoe wordt verplaatst
 
-
+//je bent hier gebleven, je moet nog een extra stap maken
 function ContactDetails(props) {
     console.log(props)
     // const [contact, setContact] = useState({})
