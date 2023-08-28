@@ -3,11 +3,11 @@ import { useContext } from "react"
 import DataContext from "./DataContext"
     //addcontact achter form is nieuw
 function Form( { addContact} ){
-    const { contact } = useContext(DataContext)
-    console.log(contact + ' nope')
+    const contact = useContext(DataContext)
+    //console.log(contact + ' nope')
    
     const [newContact, setNewContact] = useState({
-        id:  contact ? contact.length + 1 : 1 ,
+        id: contact.length + 1,
         name: '',
         street: '',
         city: '', 
@@ -21,7 +21,7 @@ function Form( { addContact} ){
         addContact(newContact)
         //dit hierboven toegevoegd stap 3
         setNewContact({
-        id: contact ? contact.length + 2 : 2,
+        id: contact.length + 2,
         name: '',
         street: '',
         city: '', 
