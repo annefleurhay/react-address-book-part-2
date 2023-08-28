@@ -1,7 +1,13 @@
 import { useState } from "react"
+import { useContext } from "react"
+import DataContext from "./DataContext"
     //addcontact achter form is nieuw
-function Form( { addContact}){
+function Form( { addContact} ){
+    const { contact } = useContext(DataContext)
+    console.log(contact + ' nope')
+   
     const [newContact, setNewContact] = useState({
+        id:  contact ? contact.length + 1 : 1 ,
         name: '',
         street: '',
         city: '', 
@@ -15,6 +21,7 @@ function Form( { addContact}){
         addContact(newContact)
         //dit hierboven toegevoegd stap 3
         setNewContact({
+        id: contact ? contact.length + 2 : 2,
         name: '',
         street: '',
         city: '', 
@@ -27,7 +34,9 @@ function Form( { addContact}){
         setNewContact({...newContact, [name]: value})
     }
 
-
+    // if (!contact) {
+    //     return null
+    // }
 
     //functies die submit aanpakken
     return (
@@ -37,7 +46,7 @@ function Form( { addContact}){
                 <label>Name:<input
                     type="text"
                     name="name"
-                    value={newContact.firstName}
+                    value={newContact.name}
                     onChange={handleChange}
                 /></label>
                 </li>
