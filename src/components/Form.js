@@ -2,8 +2,7 @@ import { useState } from "react"
     //addcontact achter form is nieuw
 function Form( { addContact}){
     const [newContact, setNewContact] = useState({
-        firstName: '',
-        lastName: '',
+        name: '',
         street: '',
         city: '', 
 
@@ -16,8 +15,7 @@ function Form( { addContact}){
         addContact(newContact)
         //dit hierboven toegevoegd stap 3
         setNewContact({
-        firstName: '',
-        lastName: '',
+        name: '',
         street: '',
         city: '', 
         
@@ -36,23 +34,15 @@ function Form( { addContact}){
         <form onSubmit={handleSubmit}>
             <ul>
                 <li>
-                <label>First name:<input
+                <label>Name:<input
                     type="text"
-                    name="firstName"
+                    name="name"
                     value={newContact.firstName}
                     onChange={handleChange}
                 /></label>
                 </li>
 
-                <li>
-                <label>Last name:<input
-                    type="text"
-                    name="lastName"
-                    value={newContact.lastName}
-                    onChange={handleChange}
-                /></label>
-                </li>
-
+            
                 <li>
                 <label>Street:<input
                     type="text"
@@ -73,8 +63,6 @@ function Form( { addContact}){
                 <li>
                 <input type="submit" value="Add"  />
                 </li>
-
-
 
 
             </ul>
