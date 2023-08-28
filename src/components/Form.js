@@ -1,6 +1,6 @@
 import { useState } from "react"
-
-function Form(){
+    //addcontact achter form is nieuw
+function Form( { addContact}){
     const [newContact, setNewContact] = useState({
         firstName: '',
         lastName: '',
@@ -12,13 +12,17 @@ function Form(){
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(newContact)
+            //hieronder is nieuw
+        addContact(newContact)
+        //dit hierboven toegevoegd stap 3
         setNewContact({
         firstName: '',
         lastName: '',
         street: '',
         city: '', 
-
+        
         })
+        
     }
     const handleChange = (event) => {
         const {name, value,} = event.target

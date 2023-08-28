@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ContactList from "./ContactList";
 //import { useNavigate } from "react-router-dom";
-import ContactDetails from "./ContactDetails";
+//import ContactDetails from "./ContactDetails";
 
 function ContactIndex() {
     const [contact, setContact] = useState([])
@@ -16,12 +16,17 @@ function ContactIndex() {
         PeopleData()
     }, [])
 
-    
+    // Dit is nieuw
+
+    const addContact = (newContact) => {
+        setContact([...contact, newContact])
+    }
+    //
 
 return (
-        <>
-        <ContactList contacts={contact}/>
-        
+        <> 
+        <ContactList contacts={contact} addContact={addContact}/>
+        {/* prop van add contact toegevoegd stap 2*/}
         </>
 
 )
