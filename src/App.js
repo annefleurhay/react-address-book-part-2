@@ -1,15 +1,12 @@
 import './App.css';
 import {Route, Routes, Link} from 'react-router-dom'
-
-import ContactIndex from './components';
-
 import Form from './components/Form';
 import Contacts from './components/Contacts';
 import DataContext from './components/DataContext';
 import ContactList from './components/ContactList';
 import { useState, useEffect } from 'react';
 
-//moet het een object zijn in de haakjes?
+
 function App() {
 const [contact, setContact] = useState([])
 
@@ -30,8 +27,7 @@ const [contact, setContact] = useState([])
         PeopleData()
     }, [])
 
-    // Dit is nieuw
-    //regel 36 toegevoegd
+  
     const addContact = (newContact) => {
         newContact.id = contact.length + 1
         setContact([...contact, newContact])

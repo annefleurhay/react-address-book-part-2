@@ -9,23 +9,6 @@ function Contacts() {
     const navigate= useNavigate()
     const { id } = useParams()
     const location = useLocation()
-    // const person = contact.filter(p=> p.id === id)[0]
-    // console.log(person)
-    // useEffect(()=> {
-    //     setUser(person.find(p => p.id === Number(id)))
-    // // }, [person, id])
-    // useEffect(() => {
-    //     if (person && person.length > 0) {
-    //         const userFound = person.find(p => p.id === Number(id));
-    //         if (userFound) {
-    //             setUser(userFound);
-    //         } else {
-               
-    //             // Gebruiker niet gevonden, je kunt hier een foutmelding tonen of iets anders doen
-    //         }
-    //     }
-    // }, [person, id]);
-    // console.log(person)
 
     useEffect(()=> {
         if (location.state) {
@@ -45,12 +28,7 @@ function Contacts() {
             
             <button onClick={()=> navigate ('/contactlist')}>Go back</button>
             
-            {/* <Link to={`/contactlist/details/${person.id}`}></Link> */}
-            {/* {person.name} {person.email} {person.address.street} */}
-      
-         {/* <li>Straat:</li>
-        // <li>Stad:</li>
-        //     <p>test</p> */}
+            
         </div>
     )
 }

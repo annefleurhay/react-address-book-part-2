@@ -2,12 +2,11 @@ import { useState } from "react"
 import { useContext } from "react"
 import DataContext from "./DataContext"
 import { useNavigate } from "react-router-dom"
-    //addcontact achter form is nieuw
+    
 function Form( { addContact} ){
     const navigate = useNavigate()
     const contact = useContext(DataContext)
-    //console.log(contact + ' nope')
-   
+    
     const [newContact, setNewContact] = useState({
         id: contact.length + 1,
         name: '',
@@ -15,20 +14,7 @@ function Form( { addContact} ){
         city: '',
         street: ''
         },
-        
-        //het heeft iets te maken met dat de waarde niet goed wordt geladen in de property address.street en address.city ze worden geladen in city en street maar niet het genestelde object
-
-        //de id waarde wordt pas toegepast als je eerst de contactlijst hebt doorgenomen oke dit pobleem lijkt opgelost te zijn
-
-    })
-
-    const handleChange2 = (event) => {
-        const { name, value } = event.target;
-        setNewContact((prevContact) => ({
-          ...prevContact,
-          [name]: value,
-        }));
-      };
+         })
 
       const handleChange = (event) => {
         const {name, value} = event.target;
@@ -44,10 +30,6 @@ function Form( { addContact} ){
         })
       }
 
-
-      
-      
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const updatedContact = {
@@ -56,85 +38,10 @@ function Form( { addContact} ){
         };
         addContact(updatedContact);
         navigate('/contactlist')
-        // setNewContact({
-        //   id: contact.length + 2, 
-        //   name: '',
-        //   address: {
-        //     city: '',
-        //     street: '',
-        //   },
-        // });
+        
       };
       
-    // const handleSubmit = (event) => {
-    //     event.preventDefault()
-    //     console.log(newContact)
-    //         //hieronder is nieuw
-    //     addContact(newContact)
-    //     //dit hierboven toegevoegd stap 3
-    //     setNewContact({
-    //     id: contact.length + 2,
-    //     name: '',
-    //     address: {
-    //         city: '',
-    //         street: ''
-    //         },
-    //     })
-        
-    // }
-
-    //input feelds werken niet 
-
-    //hieronder is wat het was
-    // const handleChange = (event) => {
-    //     const {name, value,} = event.target
-    //     setNewContact({...newContact, [name]: value})
-    // }
-
    
-
-
-        // const handleChange = (event) => {
-        //     const { name, type, value, checked} = event.target
-            
-        //     if (type === 'checkbox') {
-              
-        //       const updatedTime = {
-        //         ...rateDuck.spendTime, [value]: checked
-        //         // the actual value of checked is changed
-        //       }
-        //       // if (value === 'swimming') {
-        //       //   updatedTime.swimming = checked
-        //       // } The long way to show what the code above this does, you'd have to add this for all of them, this is just an example so you'll understand tomorrow morning.
-              
-        //       setRateDuck({...rateDuck, spendTime: updatedTime }) 
-             
-        //     } else {
-        //       setRateDuck({...rateDuck, [name]: value })
-        //     }
-
-
-    //     if (name === 'street') {
-    //         console.log('hello')
-    //         prevContact['address'] [name] = value
-    // }
-
-
-   
-    //     setNewContact((prevContact) => ({
-    //         //if statement
-            
-    //       ...prevContact,
-    //       [name]: value ?? prevContact[name],
-    //     }));
-    //   };
-        //hierboven is nieuw en de tekst na ?? ook
-        
-    // if (!contact) {
-    //     return null
-    // }
-
-    //functies die submit aanpakken
     return (
         <form onSubmit={handleSubmit}>
             <ul>
@@ -168,12 +75,8 @@ function Form( { addContact} ){
                 <li>
                 <input type="submit" value="Add"  />
                 </li>
-
-
             </ul>
             
-
-
         </form>
     )
 }
