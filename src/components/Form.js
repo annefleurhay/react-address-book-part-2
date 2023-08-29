@@ -9,9 +9,14 @@ function Form( { addContact} ){
     const [newContact, setNewContact] = useState({
         id: contact.length + 1,
         name: '',
-        street: '',
-        city: '', 
+        address: {
+        city: '',
+        street: ''
+        },
+        
+        //het heeft iets te maken met dat de waarde niet goed wordt geladen in de property address.street en address.city ze worden geladen in city en street maar niet het genestelde object
 
+        //de id waarde wordt pas toegepast als je eerst de contactlijst hebt doorgenomen oke dit pobleem lijkt opgelost te zijn
 
     })
     const handleSubmit = (event) => {
@@ -23,17 +28,62 @@ function Form( { addContact} ){
         setNewContact({
         id: contact.length + 2,
         name: '',
-        street: '',
-        city: '', 
-        
+        address: {
+            city: '',
+            street: ''
+            },
         })
         
     }
-    const handleChange = (event) => {
-        const {name, value,} = event.target
-        setNewContact({...newContact, [name]: value})
-    }
 
+    //input feelds werken niet 
+
+    //hieronder is wat het was
+    // const handleChange = (event) => {
+    //     const {name, value,} = event.target
+    //     setNewContact({...newContact, [name]: value})
+    // }
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+
+        // const handleChange = (event) => {
+        //     const { name, type, value, checked} = event.target
+            
+        //     if (type === 'checkbox') {
+              
+        //       const updatedTime = {
+        //         ...rateDuck.spendTime, [value]: checked
+        //         // the actual value of checked is changed
+        //       }
+        //       // if (value === 'swimming') {
+        //       //   updatedTime.swimming = checked
+        //       // } The long way to show what the code above this does, you'd have to add this for all of them, this is just an example so you'll understand tomorrow morning.
+              
+        //       setRateDuck({...rateDuck, spendTime: updatedTime }) 
+             
+        //     } else {
+        //       setRateDuck({...rateDuck, [name]: value })
+        //     }
+
+
+    //     if (name === 'street') {
+    //         console.log('hello')
+    //         prevContact['address'] [name] = value
+    // }
+
+
+   
+        setNewContact((prevContact) => ({
+            //if statement
+            
+          ...prevContact,
+          [name]: value ?? prevContact[name],
+        }));
+      };
+        //hierboven is nieuw en de tekst na ?? ook
+        
     // if (!contact) {
     //     return null
     // }
