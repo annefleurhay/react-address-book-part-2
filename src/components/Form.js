@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { useContext } from "react"
 import DataContext from "./DataContext"
+import { useNavigate } from "react-router-dom"
     //addcontact achter form is nieuw
 function Form( { addContact} ){
+    const navigate = useNavigate()
     const contact = useContext(DataContext)
     //console.log(contact + ' nope')
    
@@ -19,22 +21,67 @@ function Form( { addContact} ){
         //de id waarde wordt pas toegepast als je eerst de contactlijst hebt doorgenomen oke dit pobleem lijkt opgelost te zijn
 
     })
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        console.log(newContact)
-            //hieronder is nieuw
-        addContact(newContact)
-        //dit hierboven toegevoegd stap 3
-        setNewContact({
-        id: contact.length + 2,
-        name: '',
-        address: {
-            city: '',
-            street: ''
-            },
+
+    const handleChange2 = (event) => {
+        const { name, value } = event.target;
+        setNewContact((prevContact) => ({
+          ...prevContact,
+          [name]: value,
+        }));
+      };
+
+      const handleChange = (event) => {
+        const {name, value} = event.target;
+        setNewContact((prevContact) => {
+            const newPerson = {...prevContact}
+            if(name ==='street' || name === 'city') {
+                newContact.address[name]= value
+            } else { 
+                newContact[name] = value
+
+            }
+            return newPerson
         })
+      }
+
+
+      
+      
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const updatedContact = {
+          ...newContact,
+          id: contact.length + 1,
+        };
+        addContact(updatedContact);
+        navigate('/contactlist')
+        // setNewContact({
+        //   id: contact.length + 2, 
+        //   name: '',
+        //   address: {
+        //     city: '',
+        //     street: '',
+        //   },
+        // });
+      };
+      
+    // const handleSubmit = (event) => {
+    //     event.preventDefault()
+    //     console.log(newContact)
+    //         //hieronder is nieuw
+    //     addContact(newContact)
+    //     //dit hierboven toegevoegd stap 3
+    //     setNewContact({
+    //     id: contact.length + 2,
+    //     name: '',
+    //     address: {
+    //         city: '',
+    //         street: ''
+    //         },
+    //     })
         
-    }
+    // }
 
     //input feelds werken niet 
 
@@ -44,8 +91,7 @@ function Form( { addContact} ){
     //     setNewContact({...newContact, [name]: value})
     // }
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+   
 
 
         // const handleChange = (event) => {
@@ -75,13 +121,13 @@ function Form( { addContact} ){
 
 
    
-        setNewContact((prevContact) => ({
-            //if statement
+    //     setNewContact((prevContact) => ({
+    //         //if statement
             
-          ...prevContact,
-          [name]: value ?? prevContact[name],
-        }));
-      };
+    //       ...prevContact,
+    //       [name]: value ?? prevContact[name],
+    //     }));
+    //   };
         //hierboven is nieuw en de tekst na ?? ook
         
     // if (!contact) {
